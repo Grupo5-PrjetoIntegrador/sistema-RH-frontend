@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import Setor from './Setor';
 import Usuario from './Usuario';
 

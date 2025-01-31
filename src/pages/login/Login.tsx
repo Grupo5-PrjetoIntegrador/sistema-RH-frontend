@@ -28,7 +28,7 @@ function Login() {
         })
     }
 
-    function Login(e: ChangeEvent<HTMLFormElement>) {
+    function login(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
         handleLogin(usuarioLogin)
     }
@@ -43,10 +43,7 @@ function Login() {
                     {/* Formulário */}
                     <form
                         className="w-full flex flex-col items-center justify-center gap-7"
-                        onSubmit={(login) => {
-                            login.preventDefault();
-                            console.log('Formulário enviado');
-                        }}
+                        onSubmit={login}
                     >
                         <div className="flex flex-col items-center justify-center w-full gap-4 mb-7">
                             <input

@@ -1,10 +1,10 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { cadastrarUsuario } from '../../service/Service'
 import { RotatingLines } from 'react-loader-spinner'
 import Usuario from '../../models/Usuario'
 
 import './Cadastro.css'
+import { cadastrarUsuario } from '../../services/Service'
 // import { ToastAlerta } from '../../utils/ToastAlerta'
 
 function Cadastro() {

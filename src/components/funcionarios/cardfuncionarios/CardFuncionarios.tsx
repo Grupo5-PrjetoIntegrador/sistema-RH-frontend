@@ -3,7 +3,6 @@ import Funcionario from '../../../models/Funcionario'
 
 interface CardFuncionariosProps {
     funcionario: Funcionario
-    funcionario: Funcionario
 }
 
 function CardFuncionarios({ funcionario }: CardFuncionariosProps) {
@@ -15,12 +14,9 @@ function CardFuncionarios({ funcionario }: CardFuncionariosProps) {
                 <div className="flex w-full bg-indigo-400 py-2 px-4 items-center gap-4">
                     <img
                         src={funcionario.usuario?.foto}
-                        src={funcionario.usuario?.foto}
-                        className='h-12 rounded-full'
-                        alt={funcionario.usuario?.nome} />
+                        className='h-12 rounded-full' 
                         alt={funcionario.usuario?.nome} />
                     <h3 className='text-lg font-bold text-center uppercase'>
-                        {funcionario.usuario?.nome}
                         {funcionario.usuario?.nome}
                     </h3>
                 </div>

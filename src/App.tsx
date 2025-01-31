@@ -5,6 +5,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Cadastro from './pages/cadastro/Cadastro';
+import Perfil from './pages/perfil/Perfil';
 
 function App() {
     return (
@@ -18,6 +19,15 @@ function App() {
                     <Route path='/home' element={<Home />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/cadastro' element={<Cadastro />} />
+                    {/* <Route path="/setor" element={<ListaSetor />} />
+                    <Route path="/cadastrarsetor" element={<FormSetor />} />
+                    <Route path="/editarsetor/:id" element={<FormSetor />} />
+                    <Route path="/deletarsetor/:id" element={<DeletarSetor />} />
+                    <Route path="/funcionarios" element={<ListaFuncionarios />} />
+                    <Route path="/cadastrarfuncionario" element={<FormFuncionario />} />
+                    <Route path="/editarfuncionario/:id" element={<FormFuncionario />} />
+                    <Route path="/deletarfuncionario/:id" element={<DeletarFuncionario />} /> */}
+                    <Route path="/perfil" element={<Perfil />} />
                   </Routes>
                 </div>
                 <Footer />

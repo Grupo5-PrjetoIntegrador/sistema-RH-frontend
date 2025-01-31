@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import Funcionario from '../../../models/Funcionario'
 
 interface CardFuncionariosProps {
-    postagem: Funcionario
+    funcionario: Funcionario
 }
 
-function CardPostagem({ postagem }: CardFuncionariosProps) {
+function CardFuncionarios({ funcionario }: CardFuncionariosProps) {
     return (
         <div className='border-slate-900 border 
             flex flex-col rounded overflow-hidden justify-between'>
@@ -13,21 +13,21 @@ function CardPostagem({ postagem }: CardFuncionariosProps) {
             <div>
                 <div className="flex w-full bg-indigo-400 py-2 px-4 items-center gap-4">
                     <img
-                        src={postagem.usuario?.foto}
+                        src={funcionario.usuario?.foto}
                         className='h-12 rounded-full'
-                        alt={postagem.usuario?.nome} />
+                        alt={funcionario.usuario?.nome} />
                     <h3 className='text-lg font-bold text-center uppercase'>
-                        {postagem.usuario?.nome}
+                        {funcionario.usuario?.nome}
                     </h3>
                 </div>
                 <div className='p-4 '>
-                    <h4 className='text-lg font-semibold uppercase'>{postagem.titulo}</h4>
-                    <p>{postagem.texto}</p>
-                    <p>Tema: {postagem.tema?.descricao}</p>
+                    <h4 className='text-lg font-semibold uppercase'>{funcionario.titulo}</h4>
+                    <p>{funcionario.texto}</p>
+                    <p>Setor: {funcionario.setor?.nomeSetor}</p>
                     <p>Data: {new Intl.DateTimeFormat(undefined, {
                         dateStyle: 'full',
                         timeStyle: 'medium',
-                    }).format(new Date(postagem.data))}</p>
+                    }).format(new Date(funcionario.data))}</p>
                 </div>
             </div>
             <div className="flex">
@@ -46,4 +46,4 @@ function CardPostagem({ postagem }: CardFuncionariosProps) {
     )
 }
 
-export default CardPostagem
+export default CardFuncionarios;

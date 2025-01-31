@@ -1,9 +1,9 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import './ModalPostagem.css'
+import './Funcionario.css'
 import FormFuncionarios from '../formfuncionarios/FormFuncionarios';
 
-function ModalPostagem() {
+function Funcionario() {
     return (
         <>
             <Popup
@@ -21,4 +21,4 @@ function ModalPostagem() {
     );
 }
 
-export default ModalPostagem;
+export default Funcionario;

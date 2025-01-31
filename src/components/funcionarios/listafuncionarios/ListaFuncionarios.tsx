@@ -17,7 +17,7 @@ function ListaFuncionarios() {
 
     async function buscarFuncionario() {
         try {
-            await buscar('/funcionarios', setFuncionarios, {
+            await buscar('/funcionarios/all', setFuncionarios, {
                 headers: {
                     Authorization: token,
                 },
@@ -56,8 +56,8 @@ function ListaFuncionarios() {
             <div className='container mx-auto my-4 
                 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
             >
-                {funcionarios.map((postagem) => (
-                    <CardFuncionarios key={postagem.id} postagem={postagem} />
+                {funcionarios.map((funcionario) => (
+                    <CardFuncionarios key={funcionario.id} funcionario={funcionario} />
                 ))}
 
             </div>

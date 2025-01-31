@@ -28,10 +28,10 @@ function App() {
                     <Route path="/cadastrarsetor" element={<FormSetor />} />
                     <Route path="/editarsetor/:id" element={<FormSetor />} />
                     <Route path="/deletarsetor/:id" element={<DeletarSetor />} />
-                    {/* <Route path="/funcionarios" element={<ListaFuncionarios />} />
-                    <Route path="/cadastrarfuncionario" element={<FormFuncionario />} />
-                    <Route path="/editarfuncionario/:id" element={<FormFuncionario />} />
-                    <Route path="/deletarfuncionario/:id" element={<DeletarFuncionario />} /> */}
+                    <Route path="/funcionarios" element={<ListaFuncionarios />} />
+                    <Route path="/cadastrarfuncionario" element={<FormFuncionarios />} />
+                    <Route path="/editarfuncionario/:id" element={<FormFuncionarios />} />
+                    {/* <Route path="/deletarfuncionario/:id" element={<DeletarFuncionario />} /> */}
                     <Route path="/perfil" element={<Perfil />} />
                   </Routes>
                 </div>

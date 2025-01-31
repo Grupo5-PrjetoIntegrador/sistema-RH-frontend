@@ -21,13 +21,13 @@ function CardFuncionarios({ funcionario }: CardFuncionariosProps) {
                     </h3>
                 </div>
                 <div className='p-4 '>
-                    <h4 className='text-lg font-semibold uppercase'>{funcionario.titulo}</h4>
-                    <p>{funcionario.texto}</p>
+                    <h4 className='text-lg font-semibold uppercase'>{funcionario.nome}</h4>
+                    <p>{funcionario.cargo}</p>
                     <p>Setor: {funcionario.setor?.nomeSetor}</p>
                     <p>Data: {new Intl.DateTimeFormat(undefined, {
                         dateStyle: 'full',
                         timeStyle: 'medium',
-                    }).format(new Date(funcionario.data))}</p>
+                    }).format(new Date(funcionario.aniversarioEmpresa))}</p>
                 </div>
             </div>
             <div className="flex">

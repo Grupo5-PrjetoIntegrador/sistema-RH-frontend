@@ -2,10 +2,6 @@ import Setor from './Setor';
 import Usuario from './Usuario';
 
 export default interface Funcionario {
-    titulo: ReactNode;
-    texto: ReactNode;
-    tema: any;
-    data: string | number | Date;
     id: number;
     nome: string;
     cargo: string;

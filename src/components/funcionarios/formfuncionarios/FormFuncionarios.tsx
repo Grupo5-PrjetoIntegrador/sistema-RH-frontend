@@ -26,7 +26,7 @@ function FormFuncionarios() {
                 </div>
                 <div className="flex flex-col gap-2">
                     <p>Setor</p>
-                    <select name="tema" id="tema" className='border p-2 border-slate-800 rounded' >
+                    <select name="setor" id="setor" className='border p-2 border-slate-800 rounded' >
                         <option value="" selected disabled>Selecione o setor</option>
                         
                         <>

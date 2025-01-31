@@ -9,6 +9,8 @@ import Perfil from './pages/perfil/Perfil';
 import ListaSetores from './components/setores/listasetores/ListaSetores';
 import FormSetor from './components/setores/formsetor/FormSetor';
 import DeletarSetor from './components/setores/deletarsetor/DeletarSetor';
+import ListaFuncionarios from './components/funcionarios/listafuncionarios/ListaFuncionarios';
+import FormFuncionarios from './components/funcionarios/formfuncionarios/FormFuncionarios';
 
 function App() {
     return (

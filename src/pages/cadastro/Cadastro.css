@@ -1,0 +1,8 @@
+.fundoCadastro {
+    background-image: url("https://www.goiania.go.leg.br/imagens/transparencia/recursos-humanos.png/image_preview");
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+  }

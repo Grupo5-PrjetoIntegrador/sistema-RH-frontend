@@ -1,6 +1,8 @@
 function App() {
     return (
-        <></>
+        <>
+            <Route path="/perfil" element={<Perfil />} />
+        </>
     )
 }
 

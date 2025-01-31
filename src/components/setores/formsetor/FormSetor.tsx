@@ -59,7 +59,7 @@ function FormSetor() {
 
         if (id !== undefined) {
             try {
-                await atualizar(`/setores`, setor, setSetor, {
+                await atualizar(`/setores/atualizar`, setor, setSetor, {
                     headers: { 'Authorization': token }
                 })
                 alert('O setor foi atualizado com sucesso!')
@@ -73,7 +73,7 @@ function FormSetor() {
             }
         } else {
             try {
-                await cadastrar(`/setores`, setor, setSetor, {
+                await cadastrar(`/setores/cadastrar`, setor, setSetor, {
                     headers: { 'Authorization': token }
                 })
                 alert('O setor foi cadastrado com sucesso!')

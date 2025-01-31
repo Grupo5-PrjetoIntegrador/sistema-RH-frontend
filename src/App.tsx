@@ -6,6 +6,9 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Cadastro from './pages/cadastro/Cadastro';
 import Perfil from './pages/perfil/Perfil';
+import ListaSetores from './components/setores/listasetores/ListaSetores';
+import FormSetor from './components/setores/formsetor/FormSetor';
+import DeletarSetor from './components/setores/deletarsetor/DeletarSetor';
 
 function App() {
     return (
@@ -19,11 +22,11 @@ function App() {
                     <Route path='/home' element={<Home />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/cadastro' element={<Cadastro />} />
-                    {/* <Route path="/setor" element={<ListaSetor />} />
+                    <Route path="/setores" element={<ListaSetores />} />
                     <Route path="/cadastrarsetor" element={<FormSetor />} />
                     <Route path="/editarsetor/:id" element={<FormSetor />} />
                     <Route path="/deletarsetor/:id" element={<DeletarSetor />} />
-                    <Route path="/funcionarios" element={<ListaFuncionarios />} />
+                    {/* <Route path="/funcionarios" element={<ListaFuncionarios />} />
                     <Route path="/cadastrarfuncionario" element={<FormFuncionario />} />
                     <Route path="/editarfuncionario/:id" element={<FormFuncionario />} />
                     <Route path="/deletarfuncionario/:id" element={<DeletarFuncionario />} /> */}

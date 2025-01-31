@@ -5,7 +5,7 @@ import { RotatingLines } from 'react-loader-spinner'
 import Usuario from '../../models/Usuario'
 
 import './Cadastro.css'
-import { ToastAlerta } from '../../utils/ToastAlerta'
+// import { ToastAlerta } from '../../utils/ToastAlerta'
 
 function Cadastro() {
 
@@ -54,12 +54,15 @@ function Cadastro() {
 
       try {
         await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario)
-        ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso')
+        alert('Usuário cadastrado com sucesso!');
+        //ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso')
       } catch (error) {
-        ToastAlerta('Erro ao cadastrar o usuário!', 'erro')
+        alert('Erro ao cadastrar o usuário!');
+        //ToastAlerta('Erro ao cadastrar o usuário!', 'erro')
       }
     } else {
-      ToastAlerta('Dados estão inconsistentes. Verifique as informações do cadastro', 'erro')
+      alert('Dados estão inconsistentes. Verifique as informações do cadastro');
+      //ToastAlerta('Dados estão inconsistentes. Verifique as informações do cadastro', 'erro')
       setUsuario({ ...usuario, senha: '' })
       setConfirmaSenha('')
     }

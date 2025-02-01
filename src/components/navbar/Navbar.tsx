@@ -17,17 +17,19 @@ function Navbar() {
     
     return (
         <>
-            <div className='w-full bg-indigo-900 text-white
-                flex justify-center py-4'>
+            <div className='w-full bg-blue-950 text-blue-50 flex justify-center py-4'>
 
                 <div className="container flex justify-between text-lg">
-                    <Link to='/home' className="text-2xl font-bold">Gen RH</Link>
+                    <div className="flex justify-center items-center gap-4">
+                        <img src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/logo03.svg?updatedAt=1738427828575" alt="Logo Build Minds RH" className="size-8" />
+                        <Link to='/home' className="text-2xl font-bold">Build Minds RH</Link>
+                    </div>
 
                     <div className='flex gap-4'>
-                        <Link to='/funcionarios' className='hover:underline'>Funcionários</Link>
-                        <Link to='/setores' className='hover:underline'>Setores</Link>
-                        <Link to='/cadastrarsetor' className='hover:underline'>Cadastrar Setor</Link>
-                        <Link to='/perfil' className='hover:underline'>Perfil</Link>
+                        <Link to='/funcionarios' className='hover:text-cor-destaque'>Funcionários</Link>
+                        <Link to='/setores' className='hover:text-cor-destaque'>Setores</Link>
+                        <Link to='/cadastrarsetor' className='hover:text-cor-destaque'>Cadastrar Setor</Link>
+                        <Link to='/perfil' className='hover:text-cor-destaque'>Perfil</Link>
                         <Link to='' onClick={logout} className='hover:text-red-600'>Sair</Link>
                     </div>
                 </div>

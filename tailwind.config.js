@@ -8,6 +8,9 @@ export default {
     extend: {
       colors: {
         'cor-destaque': '#E66032'
+      },
+      fontFamily: {
+        montserrat: ['Montserrat', 'serif']
       }
     },
   },

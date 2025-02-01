@@ -2,7 +2,7 @@ import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import UsuarioLogin from "../../models/UsuarioLogin";
-import { RotatingLines } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 
 function Login() {
 
@@ -35,11 +35,12 @@ function Login() {
 
     return (
         <>
-            <main className="flex flex-row items-center justify-center text-gray-800 h-screen">
+            <main className="flex flex-row items-center justify-center text-blue-950 h-screen">
                 {/* Seção de login */}
-                <section className="flex flex-col items-center justify-center w-1/5 px-12 bg-gray-50 h-full">
-                    <img src="vite.svg" alt="Logo escrito TaskFlow" className="mb-7" />
-                    <h2 className="text-3xl font-bold mb-11">Build Minds RH</h2>
+                <section className="flex flex-col items-center justify-center w-2/6 px-14 bg-blue-50 h-full">
+                    <img src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/logo02.svg?updatedAt=1738418330834" alt="Logo Build Minds RH" className="mb-7 size-28 rounded-full shadow-md shadow-blue-400" />
+                    <h2 className="text-3xl font-bold mb-5">Build Minds RH</h2>
+                    <p className="mb-11 font-semibold text-slate-500">Acesse a plataforma:</p>
                     {/* Formulário */}
                     <form
                         className="w-full flex flex-col items-center justify-center gap-7"
@@ -48,47 +49,50 @@ function Login() {
                         <div className="flex flex-col items-center justify-center w-full gap-4 mb-7">
                             <input
                                 type="text"
-                                placeholder="Usuário"
+                                placeholder="Digite seu Email"
                                 id="usuario"
                                 name="usuario"
-                                className="w-full rounded-lg border border-gray-300 py-2 px-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                                className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
                                 value={usuarioLogin.usuario}
                                 onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                             />
                             <input
                                 type="password"
                                 id="senha"
-                                placeholder="Senha"
+                                placeholder="Digite sua Senha"
                                 name="senha"
-                                className="w-full rounded-lg border border-gray-300 py-2 px-4 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                                className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
                                 value={usuarioLogin.senha}
                                 onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                             />
                         </div>
                         <button
                             type="submit"
-                            className="w-full rounded-lg bg-blue-300 text-gray-800 font-medium text-base py-3 px-6 shadow-md hover:bg-blue-500 disabled:opacity-80">
+                            className="w-full rounded-lg bg-blue-500 text-white font-medium text-base py-3 px-6 shadow-md hover:bg-blue-600 disabled:opacity-80">
 
-                        {isLoading ? <RotatingLines
-                            strokeColor="white"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="24"
-                            visible={true}
-                        /> :
+                        {isLoading ? <ThreeDots
+                                        visible={true}
+                                        height="25"
+                                        width="60"
+                                        color="#33212B"
+                                        radius="9"
+                                        ariaLabel="three-dots-loading"
+                                        wrapperStyle={{}}
+                                        wrapperClass=""
+                                        /> :
                             <span>Entrar</span>
                         }
                         </button>
-                        <div className="flex items-center justify-center w-full text-sm text-gray-800 font-normal uppercase gap-2">
-                            <div className="flex-grow h-px bg-yellow-500"></div>
-                            <span>or</span>
-                            <div className="flex-grow h-px bg-yellow-500"></div>
+                        <div className="flex items-center justify-center w-full text-md font-normal gap-2">
+                            <div className="flex-grow h-px bg-slate-300"></div>
+                            <span className="text-slate-500">Não tem uma conta?</span>
+                            <div className="flex-grow h-px bg-slate-300"></div>
                         </div>
                         <button
                             type="button"
-                            className="w-full rounded-lg border bg-blue-300 text-gray-800 font-medium text-base py-3 px-6 hover:bg-blue-500"
+                            className="w-full rounded-lg border bg-blue-500 bg-opacity-80 text-white text-opacity-80 font-medium text-base py-3 px-6 hover:bg-blue-600 hover:text-opacity-100"
                         >
-                            <Link to="/cadastro" className="text-indigo-800 hover:underline">
+                            <Link to="/cadastro">
                                 Cadastre-se
                             </Link>
                         </button>
@@ -96,13 +100,11 @@ function Login() {
                 </section>
 
                 {/* Seção direita */}
-                <section className="flex flex-col items-center justify-center w-4/5 bg-gradient-to-r from-blue-400 to-blue-300 h-full text-2xl text-gray-800">
-                    <h1 className="text-4xl mb-5 font-bold">Develop people, develop a new world!</h1>
-                    <img
-                        src="vite.svg"
-                        alt="Garota, em formato de desenho, usando seu notebook"
-                        className="rounded-full object-cover"
-                    />
+                <section className="relative flex flex-col items-center justify-center w-4/5 h-full">
+                <img src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/background01.jpg?updatedAt=1738425566395" className="w-full h-full object-cover filter grayscale" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-500/60 flex justify-center items-center">
+                <h2 className="text-5xl mb-5 font-bold text-center">Desenvolva pessoas, desenvolva um novo mundo!</h2>
+                </div>
                 </section>
             </main>
         </>

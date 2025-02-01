@@ -68,7 +68,7 @@ function Login() {
                         </div>
                         <button
                             type="submit"
-                            className="w-full rounded-lg bg-blue-500 text-white font-medium text-base py-3 px-6 shadow-md hover:bg-blue-600 disabled:opacity-80">
+                            className="w-full rounded-lg bg-blue-500 text-white font-medium text-base py-3 px-6 shadow-md hover:bg-blue-600 disabled:opacity-80 flex justify-center items-center">
 
                         {isLoading ? <ThreeDots
                                         visible={true}
@@ -79,6 +79,7 @@ function Login() {
                                         ariaLabel="three-dots-loading"
                                         wrapperStyle={{}}
                                         wrapperClass=""
+                                        
                                         /> :
                             <span>Entrar</span>
                         }

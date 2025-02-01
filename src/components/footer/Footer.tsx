@@ -6,7 +6,7 @@ function Footer() {
 
     return (
         <>
-            <div className="flex justify-between items-center bg-blue-950 text-blue-50 py-2">
+            <div className="flex justify-between items-center bg-gradient-to-r from-blue-950 to-blue-900 text-blue-50 py-2">
                 <div className='w-1/3 flex gap-2 items-center justify-center py-4'>
                 <p className='text-lg'>Veja mais projetos:</p>
                 <a href="https://github.com/Grupo5-PrjetoIntegrador" target="_blank" rel="noopener noreferrer" className="hover:text-cor-destaque">

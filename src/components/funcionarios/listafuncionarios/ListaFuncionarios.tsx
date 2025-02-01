@@ -123,7 +123,7 @@ function ListaFuncionarios() {
                             className="px-4 py-2 bg-blue-900 text-blue-50 rounded-full shadow-md hover:bg-blue-700 transition disabled:opacity-50"
                             disabled={paginaAtual === 0}
                         >
-                           <ArrowLeftIcon className="size-8"/>
+                           <ArrowLeftIcon aria-hidden="true" className="size-8"/>
                         </button>
                         <span className="text-lg font-semibold">{paginaAtual + 1} / {totalPaginas}</span>
                         <button
@@ -131,7 +131,7 @@ function ListaFuncionarios() {
                             className="px-4 py-2 bg-blue-900 text-blue-50 rounded-full shadow-md hover:bg-blue-700 transition disabled:opacity-50"
                             disabled={paginaAtual === totalPaginas - 1}
                         >
-                            <ArrowRightIcon className="size-8"/>
+                            <ArrowRightIcon aria-hidden="true" className="size-8"/>
                         </button>
                     </div>
                 </div>

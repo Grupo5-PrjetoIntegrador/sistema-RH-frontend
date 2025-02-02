@@ -2,7 +2,6 @@ import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { Bars3Icon, ChevronDoubleDownIcon, HomeModernIcon, PlusCircleIcon, UserCircleIcon, UserPlusIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 import { useFloating, flip, shift, autoUpdate, offset } from '@floating-ui/react';
-//import { useRef } from 'react';
 
 const opcoes = [
   { name: 'Funcionários', description: 'Acesse a lista de funcionários', link: '/funcionarios', icon: UsersIcon },
@@ -11,6 +10,8 @@ const opcoes = [
   { name: 'Cadastrar Setor', description: "Cadastre um novo setor", link: '/cadastrarsetor', icon: PlusCircleIcon },
   { name: 'Perfil', description: 'Acesse o seu perfil', link: '/perfil', icon: UserCircleIcon },
 ];
+
+
 
 function Menu() {
   const { floatingStyles, refs } = useFloating({
@@ -23,7 +24,6 @@ function Menu() {
       {({ open }) => (
         <>
           <PopoverButton ref={refs.setReference} className="inline-flex items-center justify-center gap-x-1 text-lg font-semibold text-blue-50 pl-2 focus:outline-none focus:ring-0 hover:text-cor-destaque">
-            {/* Alterando o ícone com base no estado "open" */}
             {open ? (
               <ChevronDoubleDownIcon aria-hidden="true" className="size-7" />
             ) : (

@@ -32,7 +32,7 @@ export default function Dashboard() {
                 {pessoa.tecnologias}
               </p>
               <p className="text-slate-700 text-md">
-                <span className="font-semibold">FunFact:</span> {pessoa.funfact}
+                <span className="font-semibold">Fun Fact:</span> {pessoa.funfact}
               </p>
             </div>
           </div>

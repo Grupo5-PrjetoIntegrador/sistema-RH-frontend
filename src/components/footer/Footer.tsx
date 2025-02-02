@@ -1,6 +1,7 @@
 import { GithubLogo } from '@phosphor-icons/react'
 import { ReactNode, useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
+import { Link } from 'react-router-dom';
 
 function Footer() {
 
@@ -18,7 +19,9 @@ function Footer() {
                 <a href="https://github.com/Grupo5-PrjetoIntegrador" target="_blank" rel="noopener noreferrer" className="hover:text-cor-destaque">
                 <GithubLogo size={34} weight="bold" /></a>
                     
-                    <p> e conheca os <span className='text-cor-destaque'>Desenvolvedores</span></p>
+                    <p> e conheca os 
+                        <Link to='/desenvolvedores' className='text-cor-destaque'> Desenvolvedores</Link>
+                    </p>
                 </div>
                 <div className="container flex  flex-col items-center w-1/6">
                     <p className='text-xl font-semibold'>Build Minds RH &#169; {data}</p>

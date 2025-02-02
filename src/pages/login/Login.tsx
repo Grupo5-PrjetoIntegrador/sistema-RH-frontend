@@ -37,7 +37,7 @@ function Login() {
         <>
             <main className="flex flex-row items-center justify-center text-blue-950 h-screen">
                 {/* Seção de login */}
-                <section className="flex flex-col items-center justify-center w-2/6 px-14 bg-blue-50 h-full">
+                <section className="flex flex-col items-center justify-center w-2/6 px-14 bg-blue-50 h-full pl-32">
                     <img src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/logo03.svg?updatedAt=1738427828575" alt="Logo Build Minds RH" className="mb-7 size-28" />
                     <h2 className="text-3xl font-bold mb-5">Build Minds RH</h2>
                     <p className="mb-11 font-semibold text-slate-500">Acesse a plataforma:</p>
@@ -101,10 +101,11 @@ function Login() {
                 </section>
 
                 {/* Seção direita */}
-                <section className="relative flex flex-col items-center justify-center w-4/5 h-full">
+                <section className="relative flex flex-col items-center justify-center w-4/6 h-full">
                 <img src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/background01.jpg?updatedAt=1738425566395" className="w-full h-full object-cover filter grayscale" />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-500/60 flex flex-col justify-center items-center">
-                <h2 className="text-5xl mb-5 font-bold text-center">Desenvolva pessoas, desenvolva um novo mundo!</h2>
+                <p className="text-5xl mb-5 font-bold text-center">Desenvolva pessoas</p>
+                <p className="text-5xl mb-5 font-bold text-center">Desenvolva um novo mundo!</p>
                 <img src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/logo02.svg?updatedAt=1738418330834" alt="Imagem Desenvolvimento" className="size-48"/>
                 </div>
                 </section>

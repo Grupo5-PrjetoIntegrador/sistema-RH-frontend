@@ -1,11 +1,12 @@
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
-import { Bars3Icon, ChevronDoubleDownIcon, HomeModernIcon, PlusCircleIcon, UserCircleIcon, UsersIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, ChevronDoubleDownIcon, HomeModernIcon, PlusCircleIcon, UserCircleIcon, UserPlusIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 import { useFloating, flip, shift, autoUpdate, offset } from '@floating-ui/react';
 //import { useRef } from 'react';
 
 const opcoes = [
   { name: 'Funcionários', description: 'Acesse a lista de funcionários', link: '/funcionarios', icon: UsersIcon },
+  { name: 'Cadastrar Funcionário', description: "Cadastre um novo Funcionário", link: '/cadastrarfuncionario', icon: UserPlusIcon },
   { name: 'Setores', description: 'Acesse a lista de setores', link: '/setores', icon: HomeModernIcon },
   { name: 'Cadastrar Setor', description: "Cadastre um novo setor", link: '/cadastrarsetor', icon: PlusCircleIcon },
   { name: 'Perfil', description: 'Acesse o seu perfil', link: '/perfil', icon: UserCircleIcon },

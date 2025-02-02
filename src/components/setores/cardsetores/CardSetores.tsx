@@ -18,9 +18,6 @@ function CardSetores({ setor }: CardSetoresProps) {
                     <p className="mt-1 truncate text-sm/5 text-slate-600">Setor</p>
                 </div>
             </div>
-            <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end justify-center items-center">
-                {/* Exemplo de informação adicional */}
-            </div>
             <div className="flex flex-col w-1/12 h-full gap-2">
                 <Link to={`/editarsetor/${setor.id}`} className="flex items-center justify-center h-1/2">
                     <button className="w-12 h-12 rounded-full text-blue-800 bg-blue-100 hover:bg-blue-500 hover:text-blue-50 flex items-center justify-center">

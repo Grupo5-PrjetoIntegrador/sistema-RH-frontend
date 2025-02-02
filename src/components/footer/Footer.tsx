@@ -1,12 +1,18 @@
 import { GithubLogo } from '@phosphor-icons/react'
+import { ReactNode, useContext } from 'react'
+import { AuthContext } from '../../contexts/AuthContext'
 
 function Footer() {
 
-    let data = new Date().getFullYear()
+    let data = new Date().getFullYear();
 
-    return (
-        <>
-            <div className="flex justify-between items-center bg-gradient-to-r from-blue-950 to-blue-900 text-blue-50 py-2">
+    const {usuario} = useContext(AuthContext);
+
+    let component: ReactNode;
+
+    if (usuario.token !== "") {
+        component = (
+            <div className="flex justify-between items-center bg-gradient-to-r from-blue-950 to-blue-700 text-blue-50 py-2">
                 <div className='w-1/3 flex gap-2 items-center justify-center py-4'>
                 <p className='text-lg'>Veja mais projetos:</p>
                 <a href="https://github.com/Grupo5-PrjetoIntegrador" target="_blank" rel="noopener noreferrer" className="hover:text-cor-destaque">
@@ -19,6 +25,12 @@ function Footer() {
                    
                 </div>
             </div>
+        )
+    }
+
+    return (
+        <>
+           {component} 
         </>
     )
 }

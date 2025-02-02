@@ -3,7 +3,7 @@ import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 function Home() {
     return (
         <>
-            <div className="bg-blue-100 flex justify-center w-full min-h-screen">
+            <div className="bg-gradient-to-b from-blue-300 to-blue-50 flex justify-center w-full min-h-screen">
                 <div className="container grid grid-cols-2 text-blue-950 py-12">
                     <div className="flex flex-col gap-4 items-center justify-center py-4">
                         <h2 className="text-5xl font-bold">Build Minds RH</h2>

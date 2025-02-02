@@ -21,15 +21,15 @@ function Perfil() {
 
             <img 
                 className='w-full h-72 object-cover border-b-8 border-white' 
-                src="https://www.goiania.go.leg.br/imagens/transparencia/recursos-humanos.png/image_preview" alt="Capa do Perfil" />
+                src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/wallpaper-perfil02.png?updatedAt=1738505232818" alt="Capa do Perfil" />
 
             <img 
-                className='rounded-full w-56 mx-auto mt-[-8rem] border-8 border-white relative z-10' 
+                className='rounded-full w-56 mx-auto mt-[-8rem] border-8 border-white relative z-10 bg-blue-100' 
                 src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
 
             <div 
                 className="relative mt-[-6rem] h-72 flex flex-col 
-                    bg-sky-500 text-white text-2xl items-center justify-center"
+                    bg-blue-300 text-blue-950 text-2xl items-center justify-center"
             >
                 <p>Nome: {usuario.nome} </p>
                 <p>Email: {usuario.usuario}</p>

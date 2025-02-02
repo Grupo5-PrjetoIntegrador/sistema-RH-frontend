@@ -92,26 +92,25 @@ function FormSetor() {
     }
 
     return (
-        <div className="container flex flex-col items-center justify-center mx-auto">
+        <div className="flex flex-col items-center justify-start h-screen text-blue-950 bg-gradient-to-b from-blue-300 to-blue-50 py-5">
             <h1 className="text-4xl text-center my-8">
                 {id === undefined ? 'Cadastrar Setor' : 'Editar Setor'}
             </h1>
 
-            <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoSetor}>
-                <div className="flex flex-col gap-2">
+            <form className="w-1/2 flex flex-col gap-8 items-center justify-center " onSubmit={gerarNovoSetor}>
+                <div className="flex flex-col gap-2 w-full">
                     <label htmlFor="descricao">Descrição do Setor</label>
                     <input
                         type="text"
                         placeholder="Digite o nome do setor"
                         name='nomeSetor'
-                        className="border-2 border-slate-700 rounded p-2"
+                        className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
                         value={setor.nomeSetor}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
                 <button
-                    className="rounded text-slate-100 bg-indigo-400 
-                               hover:bg-indigo-800 w-1/2 py-2 mx-auto flex justify-center"
+                    className="w-1/3 rounded-lg bg-blue-500 text-white font-medium text-base py-3 px-6 shadow-md hover:bg-blue-600 disabled:opacity-80 flex justify-center items-center"
                     type="submit">
                     {isLoading ?
                         <RotatingLines
@@ -121,7 +120,7 @@ function FormSetor() {
                             width="24"
                             visible={true}
                         /> :
-                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+                        <span className="font-semibold">{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
 
                     }
                 </button>

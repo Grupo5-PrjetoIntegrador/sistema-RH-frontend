@@ -13,7 +13,7 @@ function ListaSetores() {
 
     const [setores, setSetores] = useState<Setor[]>([]);
     const [paginaAtual, setPaginaAtual] = useState(0);
-    const [direcao, setDirecao] = useState(1); // 1 = Próximo (entra pela direita), -1 = Anterior (entra pela esquerda)
+    const [direcao, setDirecao] = useState(1); 
 
     const { usuario, handleLogout } = useContext(AuthContext);
     const token = usuario.token;
@@ -44,31 +44,31 @@ function ListaSetores() {
         buscarSetores();
     }, [setores.length]);
 
-    // Obtém os setores da página atual
+    
     const setoresPaginados = setores.slice(
         paginaAtual * itensPorPagina,
         (paginaAtual + 1) * itensPorPagina
     );
 
-    // Função para ir para a próxima página
+    
     const proximaPagina = () => {
         if (paginaAtual < totalPaginas - 1) {
-            setDirecao(1); // Próximo -> entra pela direita
+            setDirecao(1); 
             setPaginaAtual((prev) => prev + 1);
         }
     };
 
-    // Função para ir para a página anterior
+    
     const paginaAnterior = () => {
         if (paginaAtual > 0) {
-            setDirecao(-1); // Entra pela esquerda
+            setDirecao(-1); 
             setPaginaAtual((prev) => prev - 1);
         }
     };
 
     return (
         <>
-            <div className="flex flex-col items-center w-full h-screen justify-between relative">
+            <div className="flex flex-col items-center w-full h-screen justify-between relative bg-gradient-to-b from-blue-300 to-blue-50">
                 <h2 className="font-semibold text-3xl text-blue-950 py-6">Setores:</h2>
 
                 {setores.length === 0 && (
@@ -81,7 +81,6 @@ function ListaSetores() {
                     />
                 )}
 
-                {/* Contêiner fixo para evitar mudanças de tamanho */}
                 <div className="overflow-hidden w-full relative flex-grow">
                     <AnimatePresence mode="wait" custom={direcao}>
                         <motion.ul
@@ -89,20 +88,20 @@ function ListaSetores() {
                             role="list"
                             className="divide-y divide-blue-950/30 w-full h-full flex flex-col items-center"
                             initial={{
-                                x: direcao === 1 ? "100%" : "-100%", // Inicia fora da tela (direita ou esquerda)
+                                x: direcao === 1 ? "100%" : "-100%", 
                                 opacity: 0,
                             }}
                             animate={{
-                                x: "0%", // Move para a posição final (0%)
+                                x: "0%", 
                                 opacity: 1,
                             }}
                             exit={{
-                                x: direcao === 1 ? "-100%" : "100%", // Sai da tela para a direção oposta
+                                x: direcao === 1 ? "-100%" : "100%", 
                                 opacity: 0,
                             }}
                             transition={{
-                                duration: 0.6, // Tempo de transição mais suave
-                                ease: "easeInOut", // Suaviza a animação
+                                duration: 0.6, 
+                                ease: "easeInOut", 
                             }}
                         >
                             {setoresPaginados.map((setor) => (
@@ -112,7 +111,6 @@ function ListaSetores() {
                     </AnimatePresence>
                 </div>
 
-                {/* Botões de navegação fixos no final do conteúdo */}
                 {totalPaginas > 1 && (
                     <div className="sticky bottom-0 w-full bg-blue-100 z-10 py-4">
                         <div className="flex justify-center gap-4">

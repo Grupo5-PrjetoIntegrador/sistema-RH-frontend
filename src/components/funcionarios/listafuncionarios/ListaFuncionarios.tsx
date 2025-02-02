@@ -12,7 +12,7 @@ function ListaFuncionarios() {
     const navigate = useNavigate();
     const [funcionarios, setFuncionarios] = useState<Funcionario[]>([]);
     const [paginaAtual, setPaginaAtual] = useState(0);
-    const [direcao, setDirecao] = useState(1); // 1 = Próximo (entra pela direita), -1 = Anterior (entra pela esquerda)
+    const [direcao, setDirecao] = useState(1); 
 
     const { usuario, handleLogout } = useContext(AuthContext);
     const token = usuario.token;
@@ -46,31 +46,28 @@ function ListaFuncionarios() {
         buscarFuncionario();
     }, [funcionarios.length]);
 
-    // Obtém os funcionários da página atual
     const funcionariosPaginados = funcionarios.slice(
         paginaAtual * itensPorPagina,
         (paginaAtual + 1) * itensPorPagina
     );
 
-    // Função para ir para a próxima página
     const proximaPagina = () => {
         if (paginaAtual < totalPaginas - 1) {
-            setDirecao(1); // Próximo -> entra pela direita
+            setDirecao(1); 
             setPaginaAtual((prev) => prev + 1);
         }
     };
 
-    // Função para ir para a página anterior
     const paginaAnterior = () => {
         if (paginaAtual > 0) {
-            setDirecao(-1); // Entra pela esquerda
+            setDirecao(-1); 
             setPaginaAtual((prev) => prev - 1);
         }
     };
 
     return (
         <>
-        <div className="flex flex-col items-center w-full h-screen justify-between relative">
+        <div className="flex flex-col items-center w-full h-screen justify-between relative bg-gradient-to-b from-blue-300 to-blue-50">
             <h2 className="font-semibold text-3xl text-blue-950 py-6">Funcionários:</h2>
 
             {funcionarios.length === 0 && (
@@ -83,7 +80,6 @@ function ListaFuncionarios() {
                 />
             )}
 
-            {/* Contêiner fixo para evitar mudanças de tamanho */}
             <div className="overflow-hidden w-full relative flex-grow">
                 <AnimatePresence mode="wait" custom={direcao}>
                     <motion.ul
@@ -91,20 +87,20 @@ function ListaFuncionarios() {
                         role="list"
                         className="divide-y divide-blue-950/30 w-full h-full flex flex-col items-center"
                         initial={{
-                            x: direcao === 1 ? "100%" : "-100%", // Inicia fora da tela (direita ou esquerda)
+                            x: direcao === 1 ? "100%" : "-100%", 
                             opacity: 0,
                         }}
                         animate={{
-                            x: "0%", // Move para a posição final (0%)
+                            x: "0%", 
                             opacity: 1,
                         }}
                         exit={{
-                            x: direcao === 1 ? "-100%" : "100%", // Sai da tela para a direção oposta
+                            x: direcao === 1 ? "-100%" : "100%", 
                             opacity: 0,
                         }}
                         transition={{
-                            duration: 0.6, // Tempo de transição mais suave
-                            ease: "easeInOut", // Suaviza a animação
+                            duration: 0.6, 
+                            ease: "easeInOut", 
                         }}
                     >
                         {funcionariosPaginados.map((funcionario) => (
@@ -114,9 +110,8 @@ function ListaFuncionarios() {
                 </AnimatePresence>
             </div>
 
-            {/* Botões de navegação fixos no final do conteúdo */}
             {totalPaginas > 1 && (
-                <div className="sticky bottom-0 w-full bg-blue-100 z-10 py-4">
+                <div className="sticky bottom-0 w-full bg-blue-300 z-10 py-4">
                     <div className="flex justify-center gap-4">
                         <button
                             onClick={paginaAnterior}

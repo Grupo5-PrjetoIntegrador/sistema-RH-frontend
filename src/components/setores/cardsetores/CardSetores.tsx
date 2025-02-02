@@ -20,12 +20,12 @@ function CardSetores({ setor }: CardSetoresProps) {
             </div>
             <div className="flex flex-col w-1/12 h-full gap-2">
                 <Link to={`/editarsetor/${setor.id}`} className="flex items-center justify-center h-1/2">
-                    <button className="w-12 h-12 rounded-full text-blue-800 bg-blue-100 hover:bg-blue-500 hover:text-blue-50 flex items-center justify-center">
+                    <button className="w-12 h-12 rounded-full text-blue-800 bg-blue-400 hover:bg-blue-600 hover:text-blue-50 flex items-center justify-center">
                         <PencilIcon aria-hidden="true" className='size-7'/>
                     </button>
                 </Link>
                 <Link to={`/deletarsetor/${setor.id}`} className="flex items-center justify-center h-1/2">
-                    <button className="w-12 h-12 rounded-full bg-red-200 text-red-800 hover:bg-red-500 hover:text-red-50 flex items-center justify-center">
+                    <button className="w-12 h-12 rounded-full bg-red-400 text-red-800 hover:bg-red-600 hover:text-red-50 flex items-center justify-center">
                         <XMarkIcon aria-hidden="true" className='size-7' />
                     </button>
                 </Link>

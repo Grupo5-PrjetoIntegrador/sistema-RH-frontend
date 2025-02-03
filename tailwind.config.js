@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'cor-destaque': '#E66032'
+        'cor-destaque': '#E66032',
       },
       fontFamily: {
         montserrat: ['Montserrat', 'serif']

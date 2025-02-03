@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../../contexts/AuthContext"
 import { buscar, deletar } from "../../../services/Service"
-import { RotatingLines } from "react-loader-spinner"
+import { ThreeDots } from "react-loader-spinner"
 import Funcionario from "../../../models/Funcionario"
 import { ToastAlerta } from "../../../utils/ToastAlert"
 
@@ -101,12 +101,15 @@ function DeletarFuncionario() {
                         onClick={deletarFuncionario}>
                         
                         {isLoading ?
-                            <RotatingLines
-                                strokeColor="white"
-                                strokeWidth="5"
-                                animationDuration="0.75"
-                                width="24"
-                                visible={true}
+                            <ThreeDots
+                            visible={true}
+                            height="25"
+                            width="60"
+                            color="#1E3A8A"
+                            radius="9"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClass=""
                             /> :
                             <span>Sim</span>
                         }

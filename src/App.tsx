@@ -5,11 +5,14 @@ import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Cadastro from './pages/cadastro/Cadastro';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
     return (
         <>
             <AuthProvider>
+              <ToastContainer />
               <BrowserRouter>
                 <Navbar />
                 <div className='min-h-[-80vh]'>

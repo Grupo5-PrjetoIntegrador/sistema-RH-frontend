@@ -5,6 +5,7 @@ import { buscar } from "../../../services/Service";
 import { DNA } from "react-loader-spinner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ToastAlerta } from "../../../utils/ToastAlert";
 import Funcionario from "../../../models/Funcionario";
 
 function ListaFuncionarios() {
@@ -35,7 +36,7 @@ function ListaFuncionarios() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado');
+            ToastAlerta("Você precisa estar logado", "erro")
             navigate('/');
         }
     }, [token]);

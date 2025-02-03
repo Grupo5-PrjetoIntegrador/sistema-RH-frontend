@@ -7,6 +7,7 @@ import CardSetores from "../cardsetores/CardSetores";
 import { buscar } from "../../../services/Service";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ToastAlerta } from "../../../utils/ToastAlert";
 
 function ListaSetores() {
     const navigate = useNavigate();
@@ -35,7 +36,7 @@ function ListaSetores() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado!');
+            ToastAlerta("Você precisa estar logado!", "erro")
             navigate('/');
         }
     }, [token]);

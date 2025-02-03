@@ -5,6 +5,7 @@ import Setor from "../../../models/Setor"
 import { buscar, deletar } from "../../../services/Service"
 import { RotatingLines } from "react-loader-spinner"
 import { CheckIcon, HomeModernIcon, XMarkIcon } from "@heroicons/react/24/outline"
+import { ToastAlerta } from "../../../utils/ToastAlert"
 
 function DeletarSetor() {
 
@@ -34,7 +35,7 @@ function DeletarSetor() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado')
+            ToastAlerta("Você precisa estar logado", "erro")
             navigate('/')
         }
     }, [token])
@@ -54,14 +55,13 @@ function DeletarSetor() {
                     'Authorization': token
                 }
             })
-
-            alert('Setor apagado com sucesso')
+            ToastAlerta("Setor apagado com sucesso", "sucesso")
 
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout()
             }else {
-                alert('Erro ao deletar o setor.')
+                ToastAlerta("OErro ao deletar o setor", "erro")
             }
         }
 

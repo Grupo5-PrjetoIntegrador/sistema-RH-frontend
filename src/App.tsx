@@ -11,11 +11,15 @@ import FormSetor from './components/setores/formsetor/FormSetor';
 import DeletarSetor from './components/setores/deletarsetor/DeletarSetor';
 import ListaFuncionarios from './components/funcionarios/listafuncionarios/ListaFuncionarios';
 import FormFuncionarios from './components/funcionarios/formfuncionarios/FormFuncionarios';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 function App() {
     return (
         <>
             <AuthProvider>
+            <ToastContainer />
               <BrowserRouter>
                 <Navbar />
                 <div className='min-h-screen bg-blue-50 font-montserrat'>

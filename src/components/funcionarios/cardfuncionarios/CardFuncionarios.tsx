@@ -27,7 +27,7 @@ function CardFuncionarios({ funcionario }: CardFuncionariosProps) {
                         Na empresa desde:{' '}
                         {new Intl.DateTimeFormat(undefined, {
                             dateStyle: 'medium',
-                        }).format(new Date(funcionario.aniversarioEmpresa))}
+                        }).format(new Date(funcionario.aniversarioEmpresa))} 
                     </p>
                 </div>
                 <div className="flex flex-col w-1/12 h-full gap-2">

@@ -13,6 +13,7 @@ import ListaFuncionarios from './components/funcionarios/listafuncionarios/Lista
 import FormFuncionarios from './components/funcionarios/formfuncionarios/FormFuncionarios';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import SalarioFuncionarios from './components/funcionarios/salariofuncionarios/SalarioFuncionarios';
 
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
                     <Route path="/editarfuncionario/:id" element={<FormFuncionarios />} />
                     {/* <Route path="/deletarfuncionario/:id" element={<DeletarFuncionario />} /> */}
                     <Route path="/perfil" element={<Perfil />} />
+                    <Route path="/funcionarios/:id/salario" element={<SalarioFuncionarios />} />
+
                   </Routes>
                 </div>
                 <Footer />

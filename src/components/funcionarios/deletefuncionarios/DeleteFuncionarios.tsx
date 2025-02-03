@@ -5,6 +5,7 @@ import Funcionario from "../../../models/Funcionario";
 import { buscar, deletar } from "../../../services/Service";
 import { ThreeDots } from "react-loader-spinner";
 import { CheckIcon, UserMinusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ToastAlerta } from "../../../utils/ToastAlert";
 
 function DeletarFuncionario() {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ function DeletarFuncionario() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
+      ToastAlerta("Você precisa estar logado", 'info');
       navigate("/");
     }
   }, [token]);
@@ -54,12 +55,12 @@ function DeletarFuncionario() {
         },
       });
 
-      alert("Funcionário apagado com sucesso");
+      ToastAlerta("Funcionário apagado com sucesso", "successo");
     } catch (error: any) {
       if (error.toString().includes("403")) {
         handleLogout();
       } else {
-        alert("Erro ao deletar o funcionário.");
+        ToastAlerta("Erro ao deletar o funcionário.", "erro");
       }
     }
 

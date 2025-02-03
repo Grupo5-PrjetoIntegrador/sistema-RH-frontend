@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import Setor from "../../../models/Setor";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToastAlert";
 
 function FormSetor() {
   const navigate = useNavigate();
@@ -28,12 +29,12 @@ function FormSetor() {
     }
   }
 
-  useEffect(() => {
-    if (token === "") {
-      alert("Você precisa estar logado!");
-      navigate("/");
-    }
-  }, [token]);
+    useEffect(() => {
+        if (token === '') {
+            ToastAlerta("Você precisa estar logado!", "erro")
+            navigate('/')
+        }
+    }, [token])
 
   useEffect(() => {
     if (id !== undefined) {
@@ -56,33 +57,35 @@ function FormSetor() {
     e.preventDefault();
     setIsLoading(true);
 
-    if (id !== undefined) {
-      try {
-        await atualizar(`/setores/atualizar`, setor, setSetor, {
-          headers: { Authorization: token },
-        });
-        alert("O setor foi atualizado com sucesso!");
-      } catch (error: any) {
-        if (error.toString().includes("403")) {
-          handleLogout();
+        if (id !== undefined) {
+            try {
+                await atualizar(`/setores/atualizar`, setor, setSetor, {
+                    headers: { 'Authorization': token }
+                })
+                ToastAlerta("O setor foi atualizado com sucesso!", "sucesso")
+            } catch (error: any) {
+                if (error.toString().includes('403')) {
+                    handleLogout();
+                } else {
+                    ToastAlerta("Erro ao atualizar o setor", "erro")
+                }
+
+            }
         } else {
-          alert("Erro ao atualizar o setor.");
+            try {
+                await cadastrar(`/setores/cadastrar`, setor, setSetor, {
+                    headers: { 'Authorization': token }
+                })
+                ToastAlerta("O setor foi cadastrado com sucesso!", "sucesso")
+            } catch (error: any) {
+                if (error.toString().includes('403')) {
+                    handleLogout();
+                } else {
+                    ToastAlerta("Erro ao cadastrar o setor", "erro")
+                }
+
+            }
         }
-      }
-    } else {
-      try {
-        await cadastrar(`/setores/cadastrar`, setor, setSetor, {
-          headers: { Authorization: token },
-        });
-        alert("O setor foi cadastrado com sucesso!");
-      } catch (error: any) {
-        if (error.toString().includes("403")) {
-          handleLogout();
-        } else {
-          alert("Erro ao cadastrar o setor.");
-        }
-      }
-    }
 
     setIsLoading(false);
     retornar();

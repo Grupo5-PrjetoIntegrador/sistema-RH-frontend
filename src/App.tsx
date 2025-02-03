@@ -13,11 +13,13 @@ import ListaFuncionarios from './components/funcionarios/listafuncionarios/Lista
 import FormFuncionarios from './components/funcionarios/formfuncionarios/FormFuncionarios';
 import Vitrine from './pages/vitrine/Vitrine';
 import DeletarFuncionario from './components/funcionarios/deletefuncionarios/DeleteFuncionarios';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
     return (
         <>
             <AuthProvider>
+            <ToastContainer />
               <BrowserRouter>
                 <Navbar />
                 <div className='min-h-screen bg-blue-50 font-montserrat'>

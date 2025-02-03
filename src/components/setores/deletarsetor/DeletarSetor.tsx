@@ -1,14 +1,11 @@
-import { useState, useContext, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthContext";
-import Setor from "../../../models/Setor";
-import { buscar, deletar } from "../../../services/Service";
-import { ThreeDots } from "react-loader-spinner";
-import {
-  CheckIcon,
-  HomeModernIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { useState, useContext, useEffect } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { AuthContext } from "../../../contexts/AuthContext"
+import Setor from "../../../models/Setor"
+import { buscar, deletar } from "../../../services/Service"
+import { ThreeDots } from "react-loader-spinner"
+import { CheckIcon, HomeModernIcon, XMarkIcon } from "@heroicons/react/24/outline"
+import { ToastAlerta } from "../../../utils/ToastAlert"
 
 function DeletarSetor() {
   const navigate = useNavigate();
@@ -21,26 +18,26 @@ function DeletarSetor() {
 
   const { id } = useParams<{ id: string }>();
 
-  async function buscarPorId(id: string) {
-    try {
-      await buscar(`/setores/${id}`, setSetor, {
-        headers: {
-          Authorization: token,
-        },
-      });
-    } catch (error: any) {
-      if (error.toString().includes("403")) {
-        handleLogout();
-      }
+    async function buscarPorId(id: string) {
+        try {
+            await buscar(`/setores/${id}`, setSetor, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('403')) {
+                handleLogout()
+            }
+        }
     }
-  }
 
-  useEffect(() => {
-    if (token === "") {
-      alert("Você precisa estar logado");
-      navigate("/");
-    }
-  }, [token]);
+    useEffect(() => {
+        if (token === '') {
+            ToastAlerta("Você precisa estar logado", "erro")
+            navigate('/')
+        }
+    }, [token])
 
   useEffect(() => {
     if (id !== undefined) {
@@ -51,25 +48,25 @@ function DeletarSetor() {
   async function deletarSetor() {
     setIsLoading(true);
 
-    try {
-      await deletar(`/setores/${id}`, {
-        headers: {
-          Authorization: token,
-        },
-      });
+        try {
+            await deletar(`/setores/${id}`, {
+                headers: {
+                    'Authorization': token
+                }
+            })
+            ToastAlerta("Setor apagado com sucesso", "sucesso")
 
-      alert("Setor apagado com sucesso");
-    } catch (error: any) {
-      if (error.toString().includes("403")) {
-        handleLogout();
-      } else {
-        alert("Erro ao deletar o setor.");
-      }
+        } catch (error: any) {
+            if (error.toString().includes('403')) {
+                handleLogout()
+            }else {
+                ToastAlerta("OErro ao deletar o setor", "erro")
+            }
+        }
+
+        setIsLoading(false)
+        retornar()
     }
-
-    setIsLoading(false);
-    retornar();
-  }
 
   function retornar() {
     navigate("/setores");

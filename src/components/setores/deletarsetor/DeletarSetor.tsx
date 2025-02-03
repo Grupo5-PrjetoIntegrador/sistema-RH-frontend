@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { AuthContext } from "../../../contexts/AuthContext"
 import Setor from "../../../models/Setor"
 import { buscar, deletar } from "../../../services/Service"
-import { RotatingLines } from "react-loader-spinner"
+import { ThreeDots } from "react-loader-spinner"
 import { CheckIcon, HomeModernIcon, XMarkIcon } from "@heroicons/react/24/outline"
 import { ToastAlerta } from "../../../utils/ToastAlert"
 

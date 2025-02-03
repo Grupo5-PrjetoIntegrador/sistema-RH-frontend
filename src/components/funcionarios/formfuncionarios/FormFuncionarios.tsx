@@ -4,13 +4,15 @@ import Setor from "../../../models/Setor";
 import Funcionario from "../../../models/Funcionario";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { ThreeDots } from "react-loader-spinner";
+import { ToastAlerta } from "../../../utils/ToastAlert";
 
 function FormFuncionarios() {
 
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [setor, setSetor] = useState<Setor[]>([]);
+    const [setores, setSetores] = useState<Setor[]>([]);
 
     
     const [setor, setSetor] = useState<Setor>({id: 0, nomeSetor: '', });
@@ -47,7 +49,7 @@ function FormFuncionarios() {
 
     async function buscarSetores() {
         try {
-            await buscar('/setores', setSetor, {
+            await buscar('/setores', setSetores, {
                 headers: { Authorization: token }
             })
         } catch (error: any) {
@@ -133,45 +135,68 @@ function FormFuncionarios() {
     const carregandoSetor = setor.nomeSetor === '';
 
     return (
-        <div className=" flex flex-col items-center justify-center w-full h-screen bg-gradient-to-b from-blue-300 to-blue-50">
-            <h1 className="text-4xl text-center my-8 font-semibold text-blue-950">Cadastrar funcionário</h1>
+        <div className="container flex flex-col mx-auto items-center">
+            <h1 className="text-4xl text-center my-8">
+                {id !== undefined ? 'Editar Funcionário' : 'Cadastrar Funcionário'}
+            </h1>
 
-            <form className="flex flex-col w-1/2 gap-8 items-center justify-center">
-                <div className="flex flex-col gap-2 w-full">
-                    <label htmlFor="titulo">Nome</label>
-                    <input
+            <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovoFuncionario}>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="nome">Nome do funcionario</label>
+                    <input 
+                    type="text"
+                    placeholder="Escreva aqui o nome do funcionário"
+                    name="nome"
+                    required
+                    className="border-2 border-rose-quartz rounded p-2"
+                    value={funcionario.nome}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                />
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="cargo">Cargo</label>
+                    <input 
                         type="text"
-                        placeholder="Titulo"
-                        name="titulo"
+                        placeholder="Escrava aqui o cargo do funcionário"
+                        name="cargo"
                         required
-                        className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                        className="border-2 border-rose-quartz rounded p-2"
+                        value={funcionario.cargo}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
-                <div className="flex flex-col gap-2 w-full">
-                    <label htmlFor="titulo">Cargo</label>
-                    <input
-                        type="text"
-                        placeholder="Texto"
-                        name="texto"
-                        required
-                        className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                    />
-                </div>
-                <div className="flex flex-col gap-2 w-full">
+                <div className="flex flex-col gap-2">
                     <p>Setor</p>
-                    <select name="setor" id="setor" className='w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300' >
-                        <option value="" selected disabled>Selecione o setor</option>
+                    <select name="setor" id="setor" className="border p-2 border-lit-eggplant-purple rounded"
+                        onChange={(e) => buscarSetorPorId(e.currentTarget.value)}>
+
+                        <option value="" selected disabled>Selecione um Setor</option>
                         
-                        <>
-                            <option>setor1</option>
-                        </>
+                        {setores.map((setor) => (
+                            <>
+                                <option value={setor.id}>{setor.nomeSetor}</option>
+                            </>
+                        ))}
 
                     </select>
                 </div>
-                <button type='submit' className='w-1/3 rounded-lg bg-blue-500 text-white font-medium text-base py-3 px-6 shadow-md hover:bg-blue-600 disabled:opacity-80 flex justify-center items-center'
-                >
-                    Cadastrar
-                </button>
+                <button 
+                    type="submit" 
+                    className="rounded disabled:bg-blue-400 bg-blue-600 hover:bg-blue-700 text-blue-50 font-bold w-1/2 mx-auto py-2 flex justify-center"
+                    disabled={carregandoSetor}>
+                        {isLoading ? <ThreeDots
+                                                  visible={true}
+                                                  height="25"
+                                                  width="60"
+                                                  color="#33212B"
+                                                  radius="9"
+                                                  ariaLabel="three-dots-loading"
+                                                  wrapperStyle={{}}
+                                                  wrapperClass=""
+                                                  /> :
+                                      <span>{id !== undefined ? 'Atualizar' : 'Cadastrar'}</span>
+                                    }
+                    </button>
             </form>
         </div>
     );

@@ -14,16 +14,14 @@ export const pessoas = [
   },
   {
     nome: "Anna Vighi",
-    image:
-      "https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/cat-svgrepo-com.svg?updatedAt=1738345536670",
+    image: "https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/Desenvolvedores/AnnaVighi.jpg?updatedAt=1738612522388",
     github: "https://github.com/annavighi",
     linkedin: "https://www.linkedin.com/in/anna-vighi/",
-    email: "email@email.com",
-    titulo: "Desenvolvedora (Insira a Stack)",
-    tecnologias:
-      "Blah, BlahBlah, BlahBlah, BlahBlah, BlahBlah, BlahBlah, BlahBlah, BlahBlah, BlahBlah",
-      descricao: "Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at blanditiis et quo et molestiae.",
-      funfact: "Este é um fato divertido sobre mim",
+    email: "vighianna@gmail.com",
+    titulo: "Desenvolvedora FullStack",
+    tecnologias: "Java, Spring Boot, JavaScript, Node.js, TypeScript, React, MySQL, PostgreSQL",
+    descricao: "Aluna de ADS, apaixonada por tecnologia e comunicadora por formação. Estou sempre em busca de inovação e de aprendizado.",
+    funfact: "Eu coleciono discos, imãs de geladeira e idiomas.",
   },
   {
     nome: "Marcos Lopes",

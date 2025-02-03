@@ -8,7 +8,7 @@ export const pessoas = [
     email: "caciasrsousa@gmail.com",
     titulo: "Desenvolvedora FullStack",
     tecnologias:
-      "Java, JavaScript, TypeScript, C, Python, React, Spring, Tailwind CSS, SQL, Git",
+      "Java, JavaScript, TypeScript, C, Python, React, Spring, Tailwind CSS, MySQL,SQLite, Git, Node.js",
     descricao:"Sou uma Desenvolvedora de Software Fullstack autodidata, que ama aprender e muito curiosa. Descobri o universo da tecnologia e comecei a estudar durante a pandemia desenvolvendo diversos projetos focados em Front End, Back End e FullStack. Me conheça melhor clicando ali em cima!",
       funfact: "Falo 3 línguas e meu hobbie favorito é costura.",
   },

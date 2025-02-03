@@ -1,6 +1,6 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { RotatingLines } from "react-loader-spinner";
+import { RotatingLines, ThreeDots } from "react-loader-spinner";
 import Usuario from "../../models/Usuario";
 import "./Cadastro.css";
 import { cadastrarUsuario } from "../../services/Service";
@@ -73,16 +73,23 @@ function Cadastro() {
             place-items-center text-blue-950"
       >
         <div className="lg:block relative flex flex-col items-center justify-center h-full">
-                <img src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/pessoas-trabalhando.png?updatedAt=1738439892040" className="w-full h-full object-cover filter grayscale" />
-                <div className="absolute inset-0 bg-gradient-to-l from-blue-50 to-blue-500/60 flex flex-col justify-center items-center"></div>
+          <img
+            src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/pessoas-trabalhando.png?updatedAt=1738439892040"
+            className="w-full h-full object-cover filter grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-blue-50 to-blue-500/60 flex flex-col justify-center items-center"></div>
         </div>
         <form
           className="flex justify-center items-center flex-col w-2/3 gap-7"
           onSubmit={cadastrarNovoUsuario}
         >
           <div className="flex flex-col justify-center items-center gap-5">
-            <img src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/logo03.svg?updatedAt=1738427828575" alt="Logo Build Minds RH" className="size-28"/>
-          <h2 className="text-5xl font-semibold">Cadastrar</h2>
+            <img
+              src="https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/logo03.svg?updatedAt=1738427828575"
+              alt="Logo Build Minds RH"
+              className="size-28"
+            />
+            <h2 className="text-5xl font-semibold">Cadastrar</h2>
           </div>
           <div className="flex flex-col w-full gap-2">
             <label htmlFor="nome">Nome</label>
@@ -163,14 +170,18 @@ function Cadastro() {
             </button>
             <button
               type="submit"
-              className="w-1/2 rounded-lg bg-blue-500 text-white font-medium text-base py-3 px-6 shadow-md hover:bg-blue-600 disabled:opacity-80 flex justify-center items-center">
+              className="w-1/2 rounded-lg bg-blue-500 text-white font-medium text-base py-3 px-6 shadow-md hover:bg-blue-600 disabled:opacity-80 flex justify-center items-center"
+            >
               {isLoading ? (
-                <RotatingLines
-                  strokeColor="white"
-                  strokeWidth="5"
-                  animationDuration="0.75"
-                  width="24"
+                <ThreeDots
                   visible={true}
+                  height="25"
+                  width="60"
+                  color="#1E3A8A"
+                  radius="9"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
                 />
               ) : (
                 <span>Cadastrar</span>

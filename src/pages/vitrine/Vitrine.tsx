@@ -3,7 +3,7 @@ import MenuVitrine from "./MenuVitrine";
 
 export default function Dashboard() {
   return (
-    <div className="w-full h-screen grid grid-cols-2 grid-rows-2 gap-4 p-6 bg-slate-50">
+    <div className="w-full h-screen grid grid-cols-2 grid-rows-2 gap-4 p-6 bg-gradient-to-b from-blue-300 to-blue-50">
       {pessoas.map((pessoa, index) => (
         <div
           key={index}

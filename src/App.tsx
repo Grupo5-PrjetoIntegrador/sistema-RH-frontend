@@ -14,6 +14,7 @@ import FormFuncionarios from './components/funcionarios/formfuncionarios/FormFun
 import Vitrine from './pages/vitrine/Vitrine';
 import DeletarFuncionario from './components/funcionarios/deletefuncionarios/DeleteFuncionarios';
 import { ToastContainer } from 'react-toastify';
+import SalarioFuncionarios from './components/funcionarios/salariofuncionarios/SalarioFuncionarios';
 
 function App() {
     return (
@@ -38,6 +39,8 @@ function App() {
                     <Route path="/deletarfuncionario/:id" element={<DeletarFuncionario />} />
                     <Route path="/perfil" element={<Perfil />} />
                     <Route path="/desenvolvedores" element={<Vitrine />} />
+                    <Route path="/funcionarios/:id/salario" element={<SalarioFuncionarios />} />
+
                   </Routes>
                 </div>
                 <Footer />

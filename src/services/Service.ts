@@ -34,3 +34,8 @@ export const atualizar = async (url: string, dados: Object, setDados: Function, 
 export const deletar = async (url: string, header: Object) => {
     await api.delete(url, header);
 }
+
+export const calcularSalario = async (url: string, setDados: Function, header: Object) => {
+    const resposta = await api.get(url, header);
+    setDados(resposta.data);  
+};

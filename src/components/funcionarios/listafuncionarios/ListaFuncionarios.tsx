@@ -17,7 +17,7 @@ function ListaFuncionarios() {
     const { usuario, handleLogout } = useContext(AuthContext);
     const token = usuario.token;
 
-    const itensPorPagina = 5;
+    const itensPorPagina = 4;
     const totalPaginas = Math.ceil(funcionarios.length / itensPorPagina);
 
     async function buscarFuncionario() {
@@ -122,22 +122,22 @@ function ListaFuncionarios() {
             </div>
 
             {totalPaginas > 1 && (
-                <div className="sticky bottom-0 w-full bg-blue-300 z-10 py-4">
+                <div className="sticky bottom-0 w-full bg-blue-300 z-10 py-3">
                     <div className="flex justify-center gap-4">
                         <button
                             onClick={paginaAnterior}
-                            className="px-4 py-2 bg-blue-900 text-blue-50 rounded-full shadow-md hover:bg-blue-700 transition disabled:opacity-50"
+                            className="px-2 py-2 bg-blue-900 text-blue-50 rounded-full shadow-md hover:bg-blue-700 transition disabled:opacity-50"
                             disabled={paginaAtual === 0}
                         >
-                            <ArrowLeftIcon aria-hidden="true" className="size-8" />
+                           <ArrowLeftIcon aria-hidden="true" className="size-8 hover:text-cor-destaque"/>
                         </button>
                         <span className="text-lg font-semibold">{paginaAtual + 1} / {totalPaginas}</span>
                         <button
                             onClick={proximaPagina}
-                            className="px-4 py-2 bg-blue-900 text-blue-50 rounded-full shadow-md hover:bg-blue-700 transition disabled:opacity-50"
+                            className="px-2 py-2 bg-blue-900 text-blue-50 rounded-full shadow-md hover:bg-blue-700 transition disabled:opacity-50"
                             disabled={paginaAtual === totalPaginas - 1}
                         >
-                            <ArrowRightIcon aria-hidden="true" className="size-8" />
+                            <ArrowRightIcon aria-hidden="true" className="size-8 hover:text-cor-destaque"/>
                         </button>
                     </div>
                 </div>

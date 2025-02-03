@@ -12,6 +12,7 @@ import DeletarSetor from './components/setores/deletarsetor/DeletarSetor';
 import ListaFuncionarios from './components/funcionarios/listafuncionarios/ListaFuncionarios';
 import FormFuncionarios from './components/funcionarios/formfuncionarios/FormFuncionarios';
 import Vitrine from './pages/vitrine/Vitrine';
+import DeletarFuncionario from './components/funcionarios/deletefuncionarios/DeleteFuncionarios';
 
 function App() {
     return (
@@ -32,7 +33,7 @@ function App() {
                     <Route path="/funcionarios" element={<ListaFuncionarios />} />
                     <Route path="/cadastrarfuncionario" element={<FormFuncionarios />} />
                     <Route path="/editarfuncionario/:id" element={<FormFuncionarios />} />
-                    {/* <Route path="/deletarfuncionario/:id" element={<DeletarFuncionario />} /> */}
+                    <Route path="/deletarfuncionario/:id" element={<DeletarFuncionario />} />
                     <Route path="/perfil" element={<Perfil />} />
                     <Route path="/desenvolvedores" element={<Vitrine />} />
                   </Routes>

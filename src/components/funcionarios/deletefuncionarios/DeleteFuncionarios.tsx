@@ -4,20 +4,21 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import Funcionario from "../../../models/Funcionario";
 import { buscar, deletar } from "../../../services/Service";
 import { ThreeDots } from "react-loader-spinner";
-import { CheckIcon, UserMinusIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ToastAlerta } from "../../../utils/ToastAlert";
+import {
+  CheckIcon,
+  UserMinusIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 function DeletarFuncionario() {
   const navigate = useNavigate();
-
-  const [funcionario, setFuncionario] = useState<Funcionario>({} as Funcionario);
+  const [funcionario, setFuncionario] = useState<Funcionario>(
+    {} as Funcionario
+  );
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
-
   const { id } = useParams<{ id: string }>();
-
   async function buscarPorId(id: string) {
     try {
       await buscar(`/funcionarios/${id}`, setFuncionario, {
@@ -31,50 +32,44 @@ function DeletarFuncionario() {
       }
     }
   }
-
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("Você precisa estar logado", 'info');
+      alert("Você precisa estar logado");
       navigate("/");
     }
   }, [token]);
-
   useEffect(() => {
     if (id !== undefined) {
       buscarPorId(id);
     }
   }, [id]);
-
   async function deletarFuncionario() {
     setIsLoading(true);
-
     try {
       await deletar(`/funcionarios/${id}`, {
         headers: {
           Authorization: token,
         },
       });
-
-      ToastAlerta("Funcionário apagado com sucesso", "successo");
+      alert("Funcionário apagado com sucesso");
     } catch (error: any) {
       if (error.toString().includes("403")) {
         handleLogout();
       } else {
-        ToastAlerta("Erro ao deletar o funcionário.", "erro");
+        alert("Erro ao deletar o funcionário.");
       }
     }
-
     setIsLoading(false);
     retornar();
   }
-
   function retornar() {
     navigate("/funcionarios");
   }
-
   return (
     <div className="container w-1/3 mx-auto text-blue-950">
-      <h1 className="text-4xl text-center py-8 font-semibold">Deletar Funcionário</h1>
+      <h1 className="text-4xl text-center py-8 font-semibold">
+        Deletar Funcionário
+      </h1>
       <p className="text-center font-semibold mb-4">
         Você tem certeza de que deseja apagar o funcionário a seguir?
       </p>
@@ -124,5 +119,4 @@ function DeletarFuncionario() {
     </div>
   );
 }
-
 export default DeletarFuncionario;

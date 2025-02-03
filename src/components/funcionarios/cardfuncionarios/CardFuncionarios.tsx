@@ -36,7 +36,7 @@ function CardFuncionarios({ funcionario }: CardFuncionariosProps) {
                             <PencilIcon aria-hidden="true" className="size-7" />
                         </button>
                     </Link>
-                    <Link to={`/deletarpostagem/${funcionario.id}`} className="flex items-center justify-center h-1/2">
+                    <Link to={`/deletarfuncionario/${funcionario.id}`} className="flex items-center justify-center h-1/2">
                         <button className="w-12 h-12 rounded-full bg-red-400 text-red-800 hover:bg-red-600 hover:text-red-50 flex items-center justify-center">
                             <UserMinusIcon aria-hidden="true" className="size-7" />
                         </button>

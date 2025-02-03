@@ -12,10 +12,8 @@ import DeletarSetor from './components/setores/deletarsetor/DeletarSetor';
 import ListaFuncionarios from './components/funcionarios/listafuncionarios/ListaFuncionarios';
 import FormFuncionarios from './components/funcionarios/formfuncionarios/FormFuncionarios';
 import Vitrine from './pages/vitrine/Vitrine';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
 import DeletarFuncionario from './components/funcionarios/deletefuncionarios/DeleteFuncionarios';
-
+import { ToastContainer } from 'react-toastify';
 
 function App() {
     return (

@@ -1,4 +1,137 @@
+import { ChangeEvent, useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Setor from "../../../models/Setor";
+import Funcionario from "../../../models/Funcionario";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { atualizar, buscar, cadastrar } from "../../../services/Service";
+
 function FormFuncionarios() {
+
+    const navigate = useNavigate();
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [setor, setSetor] = useState<Setor[]>([]);
+
+    
+    const [setor, setSetor] = useState<Setor>({id: 0, nomeSetor: '', });
+    const [funcionario, setFuncionario] = useState<Funcionario>({} as Funcionario);
+
+    const { id } = useParams<{id: string}>();
+
+    const { usuario, handleLogout } = useContext(AuthContext);
+    const token = usuario.token;
+
+    async function buscarFuncionarioPorId(id: string) {
+        try {
+            await buscar(`/funcionarios/${id}`, setFuncionario, {
+                headers: { Authorization: token }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('403')) {
+                handleLogout();
+            }
+        }
+    }
+
+    async function buscarSetorPorId(id: string) {
+        try {
+            await buscar(`/setores/${id}`, setSetor, {
+                headers: { Authorization: token }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('403')) {
+                handleLogout();
+            }
+        }
+    }
+
+    async function buscarSetores() {
+        try {
+            await buscar('/setores', setSetor, {
+                headers: { Authorization: token }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('403')) {
+                handleLogout();
+            }
+        }
+    }
+
+    useEffect(() => {
+        if (token === '') {
+            ToastAlerta('Você precisa estar logado!', 'info');
+            navigate('/');
+        }
+    }, [token]);
+
+    useEffect(() => {
+        buscarSetores();
+
+        if (id !== undefined) {
+            buscarFuncionarioPorId(id);
+        }
+    }, [id]);
+
+    useEffect(() => {
+        setFuncionario({
+            ...funcionario,
+            setor: setor,
+        });
+    }, [setor]);
+
+    function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+        setFuncionario({
+            ...funcionario,
+            [e.target.name]: e.target.value,
+            setor: setor,
+            usuario: usuario,
+        });
+    }
+
+    function retornar() {
+        navigate('/funcionarios');
+    }
+
+    async function gerarNovoFuncionario(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault();
+        setIsLoading(true);
+
+        if (id !== undefined) {
+            try {
+                await atualizar(`/funcionarios`, funcionario, setFuncionario, {
+                    headers: { Authorization: token, },
+                });
+
+                ToastAlerta('Funcionário atualizado com sucesso', 'sucesso');
+            } catch (error: any) {
+                if (error.toString().includes('403')) {
+                    handleLogout();
+                } else {
+                    ToastAlerta('Erro ao atualizar o Funcionário', 'erro');
+                }
+            }
+        } else {
+            try {
+                await cadastrar(`/funcionarios`, funcionario, setFuncionario, {
+                    headers: { Authorization: token, },
+                })
+
+                ToastAlerta('Funcionário cadastrado com sucesso!', 'sucesso');
+            } catch (error: any) {
+                if (error.toString().includes('403')) {
+                    handleLogout();
+                } else {
+                    ToastAlerta('Erro ao cadastrar o Funcionário', 'erro');
+                }
+            }
+        }
+
+        setIsLoading(false);
+        retornar();
+    }
+
+    const carregandoSetor = setor.nomeSetor === '';
+
     return (
         <div className=" flex flex-col items-center justify-center w-full h-screen bg-gradient-to-b from-blue-300 to-blue-50">
             <h1 className="text-4xl text-center my-8 font-semibold text-blue-950">Cadastrar funcionário</h1>

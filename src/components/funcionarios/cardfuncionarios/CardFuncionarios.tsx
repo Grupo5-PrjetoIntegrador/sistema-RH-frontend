@@ -46,26 +46,6 @@ function CardFuncionarios({ funcionario }: CardFuncionariosProps) {
             <div className='border-slate-900 border 
             flex flex-col rounded overflow-hidden justify-between'>
 
-            {/* <div>
-                <div className="flex w-full bg-indigo-400 py-2 px-4 items-center gap-4">
-                    <img
-                        src={funcionario.usuario?.foto}
-                        className='h-12 rounded-full' 
-                        alt={funcionario.usuario?.nome} />
-                    <h3 className='text-lg font-bold text-center uppercase'>
-                        {funcionario.usuario?.nome}
-                    </h3>
-                </div>
-                <div className='p-4 '>
-                    <h4 className='text-lg font-semibold uppercase'>{funcionario.nome}</h4>
-                    <p>{funcionario.cargo}</p>
-                    <p>Setor: {funcionario.setor?.nomeSetor}</p>
-                    <p>Data: {new Intl.DateTimeFormat(undefined, {
-                        dateStyle: 'full',
-                        timeStyle: 'medium',
-                    }).format(new Date(funcionario.aniversarioEmpresa))}</p>
-                </div>
-            </div> */}
             
         </div>
         </>

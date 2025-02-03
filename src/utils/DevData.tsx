@@ -27,7 +27,7 @@ export const pessoas = [
   },
   {
     nome: "Marcos Lopes",
-    image: "https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/cat-svgrepo-com.svg?updatedAt=1738345536670",
+    image: "https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/Desenvolvedores/MarcosLopes.png?updatedAt=1738590415766",
     github: "https://github.com/marcoslopesdev",
     linkedin: "https://www.linkedin.com/in/marcosaflopes/",
     email: "99marcoslopes@gmail.com",
@@ -38,7 +38,7 @@ export const pessoas = [
   },
   {
     nome: "Bruno Alexandre",
-    image: "https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/cat-svgrepo-com.svg?updatedAt=1738345536670",
+    image: "https://ik.imagekit.io/caciasrs/PI%20-%20Gen%20RH/Desenvolvedores/BrunoAlexandre.jpg?updatedAt=1738590414997",
     github: "https://github.com/brunoalexb",
     linkedin: "https://www.linkedin.com/in/brunoa-barros/",
     email: "brunoale77@gmail.com",

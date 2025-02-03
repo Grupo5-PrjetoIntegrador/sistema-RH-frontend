@@ -37,5 +37,5 @@ export const deletar = async (url: string, header: Object) => {
 
 export const calcularSalario = async (url: string, setDados: Function, header: Object) => {
     const resposta = await api.get(url, header);
-    setDados(resposta.data);  // Atualiza o estado com o salário calculado
+    setDados(resposta.data);  
 };

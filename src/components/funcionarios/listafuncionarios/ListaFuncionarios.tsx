@@ -18,7 +18,7 @@ function ListaFuncionarios() {
     const { usuario, handleLogout } = useContext(AuthContext);
     const token = usuario.token;
 
-    const itensPorPagina = 5;
+    const itensPorPagina = 4;
     const totalPaginas = Math.ceil(funcionarios.length / itensPorPagina);
 
     async function buscarFuncionario() {

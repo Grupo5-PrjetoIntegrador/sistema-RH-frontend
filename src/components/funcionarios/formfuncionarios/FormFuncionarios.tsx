@@ -1,6 +1,7 @@
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Setor from "../../../models/Setor";
+import Usuario from "../../../models/Usuario";  // Certifique-se de importar a model de Usuario
 import Funcionario from "../../../models/Funcionario";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
@@ -8,18 +9,15 @@ import { ThreeDots } from "react-loader-spinner";
 import { ToastAlerta } from "../../../utils/ToastAlert";
 
 function FormFuncionarios() {
-
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [setores, setSetores] = useState<Setor[]>([]);
-
-    
-    const [setor, setSetor] = useState<Setor>({id: 0, nomeSetor: '', });
+    const [usuarios, setUsuarios] = useState<Usuario[]>([]);  // Novo estado para usuários
+    const [setor, setSetor] = useState<Setor>({ id: 0, nomeSetor: '' });
     const [funcionario, setFuncionario] = useState<Funcionario>({} as Funcionario);
 
-    const { id } = useParams<{id: string}>();
-
+    const { id } = useParams<{ id: string }>();
     const { usuario, handleLogout } = useContext(AuthContext);
     const token = usuario.token;
 
@@ -27,7 +25,7 @@ function FormFuncionarios() {
         try {
             await buscar(`/funcionarios/${id}`, setFuncionario, {
                 headers: { Authorization: token }
-            })
+            });
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout();
@@ -39,7 +37,19 @@ function FormFuncionarios() {
         try {
             await buscar(`/setores/${id}`, setSetor, {
                 headers: { Authorization: token }
-            })
+            });
+        } catch (error: any) {
+            if (error.toString().includes('403')) {
+                handleLogout();
+            }
+        }
+    }
+
+    async function buscarUsuarios() {
+        try {
+            await buscar('/usuarios/all', setUsuarios, {
+                headers: { Authorization: token }
+            });
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout();
@@ -49,9 +59,9 @@ function FormFuncionarios() {
 
     async function buscarSetores() {
         try {
-            await buscar('/setores', setSetores, {
+            await buscar('/setores/all', setSetores, {
                 headers: { Authorization: token }
-            })
+            });
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout();
@@ -68,6 +78,7 @@ function FormFuncionarios() {
 
     useEffect(() => {
         buscarSetores();
+        buscarUsuarios();  // Carregar os usuários
 
         if (id !== undefined) {
             buscarFuncionarioPorId(id);
@@ -81,12 +92,12 @@ function FormFuncionarios() {
         });
     }, [setor]);
 
-    function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+    function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
         setFuncionario({
             ...funcionario,
             [e.target.name]: e.target.value,
             setor: setor,
-            usuario: usuario,
+            usuario: usuario,  // Adiciona o usuario automaticamente do contexto
         });
     }
 
@@ -101,7 +112,7 @@ function FormFuncionarios() {
         if (id !== undefined) {
             try {
                 await atualizar(`/funcionarios`, funcionario, setFuncionario, {
-                    headers: { Authorization: token, },
+                    headers: { Authorization: token },
                 });
 
                 ToastAlerta('Funcionário atualizado com sucesso', 'sucesso');
@@ -114,9 +125,9 @@ function FormFuncionarios() {
             }
         } else {
             try {
-                await cadastrar(`/funcionarios`, funcionario, setFuncionario, {
-                    headers: { Authorization: token, },
-                })
+                await cadastrar(`/funcionarios/cadastrar`, funcionario, setFuncionario, {
+                    headers: { Authorization: token },
+                });
 
                 ToastAlerta('Funcionário cadastrado com sucesso!', 'sucesso');
             } catch (error: any) {
@@ -144,20 +155,20 @@ function FormFuncionarios() {
                 <div className="flex flex-col gap-2">
                     <label htmlFor="nome">Nome do funcionario</label>
                     <input 
-                    type="text"
-                    placeholder="Digite aqui o nome do funcionário"
-                    name="nome"
-                    required
-                    className="border-2 border-blue-400 rounded p-2"
-                    value={funcionario.nome}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                />
+                        type="text"
+                        placeholder="Digite aqui o nome do funcionário"
+                        name="nome"
+                        required
+                        className="border-2 border-blue-400 rounded p-2"
+                        value={funcionario.nome}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
                 </div>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="cargo">Cargo</label>
                     <input 
                         type="text"
-                        placeholder="Escrava aqui o cargo do funcionário"
+                        placeholder="Escreva aqui o cargo do funcionário"
                         name="cargo"
                         required
                         className="border-2 border-blue-400 rounded p-2"
@@ -202,37 +213,80 @@ function FormFuncionarios() {
                     />
                 </div>
                 <div className="flex flex-col gap-2">
+                    <label htmlFor="horasTrabalhadas">Horas Trabalhadas</label>
+                    <input 
+                        type="number"
+                        placeholder="Digite aqui as horas trabalhadas"
+                        name="horasTrabalhadas"
+                        required
+                        className="border-2 border-blue-400 rounded p-2"
+                        value={funcionario.horasTrabalhadas}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="aniversarioEmpresa">Aniversário da Empresa</label>
+                    <input 
+                        type="date"
+                        name="aniversarioEmpresa"
+                        required
+                        className="border-2 border-blue-400 rounded p-2"
+                        value={funcionario.aniversarioEmpresa || ""}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+                <div className="flex flex-col gap-2">
                     <p>Setor</p>
-                    <select name="setor" id="setor" className="border p-2 border-lit-eggplant-purple rounded"
+                    <select 
+                        name="setor" 
+                        id="setor" 
+                        className="border p-2 border-lit-eggplant-purple rounded"
                         onChange={(e) => buscarSetorPorId(e.currentTarget.value)}>
 
                         <option value="" selected disabled>Selecione um Setor</option>
                         
                         {setores.map((setor) => (
-                            <>
-                                <option value={setor.id}>{setor.nomeSetor}</option>
-                            </>
+                            <option value={setor.id} key={setor.id}>{setor.nomeSetor}</option>
                         ))}
-
                     </select>
                 </div>
+
+                {/* Novo campo para o usuário */}
+                <div className="flex flex-col gap-2">
+                    <p>Usuário</p>
+                    <select 
+                        name="usuario" 
+                        id="usuario" 
+                        className="border p-2 border-lit-eggplant-purple rounded"
+                        value={funcionario.usuario ? funcionario.usuario.id : ''}
+                        onChange={(e) => atualizarEstado(e)}>
+
+                        <option value="" disabled>Selecione um Usuário</option>
+                        
+                        {usuarios.map((usuario) => (
+                            <option value={usuario.id} key={usuario.id}>
+                                {usuario.nome}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
                 <button 
                     type="submit" 
                     className="rounded disabled:bg-blue-400 bg-blue-600 hover:bg-blue-700 text-blue-50 font-bold w-1/2 mx-auto py-2 flex justify-center"
                     disabled={carregandoSetor}>
                         {isLoading ? <ThreeDots
-                                                  visible={true}
-                                                  height="25"
-                                                  width="60"
-                                                  color="#33212B"
-                                                  radius="9"
-                                                  ariaLabel="three-dots-loading"
-                                                  wrapperStyle={{}}
-                                                  wrapperClass=""
-                                                  /> :
-                                      <span>{id !== undefined ? 'Atualizar' : 'Cadastrar'}</span>
-                                    }
-                    </button>
+                            visible={true}
+                            height="25"
+                            width="60"
+                            color="#33212B"
+                            radius="9"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClass=""
+                        /> : 
+                        <span>{id !== undefined ? 'Atualizar' : 'Cadastrar'}</span>}
+                </button>
             </form>
         </div>
     );

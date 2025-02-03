@@ -78,12 +78,12 @@ function SalarioFuncionario() {
 
   return (
     <div className="flex flex-col items-center h-screen justify-center bg-gradient-to-b from-blue-300 to-blue-50">
-      <div className="relative bg-fuchsia-200 p-16 rounded-md shadow-lg shadow-blue-950/30">
-        <div className="flex flex-col w-full gap-3 justify-center items-center">
+      <div className="relative w-1/4 h-3/5 bg-blue-100 p-16 rounded-md shadow-lg shadow-blue-950/30">
+        <div className="flex flex-col w-full gap-3 justify-center items-center mb-10">
           <h2 className="text-3xl font-bold text-blue-950">
             Cálculo de Salário
           </h2>
-          <hr className="w-full border-t border-slate-400" />
+          <hr className="w-full border-t border-blue-950/50" />
         </div>
 
         {funcionario && (
@@ -128,13 +128,12 @@ function SalarioFuncionario() {
           </p>
         )}
 
-        {/* Botão posicionado no canto inferior esquerdo */}
         <div className="absolute bottom-4 left-4">
           <button
             onClick={() => navigate("/funcionarios")}
-            className="p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 shadow-md"
+            className="p-3 bg-blue-950/75 text-blue-50 rounded-full hover:bg-blue-800 transition duration-300 shadow-md"
           >
-            <ArrowUturnLeftIcon className="size-6" />
+            <ArrowUturnLeftIcon  aria-hidden="true" className="size-6" />
           </button>
         </div>
       </div>

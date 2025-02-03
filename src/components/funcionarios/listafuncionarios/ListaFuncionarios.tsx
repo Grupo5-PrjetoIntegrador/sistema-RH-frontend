@@ -112,7 +112,7 @@ function ListaFuncionarios() {
             </div>
 
             {totalPaginas > 1 && (
-                <div className="sticky bottom-0 w-full bg-blue-300 z-10 py-2">
+                <div className="sticky bottom-0 w-full bg-blue-300 z-10 py-3">
                     <div className="flex justify-center gap-4">
                         <button
                             onClick={paginaAnterior}

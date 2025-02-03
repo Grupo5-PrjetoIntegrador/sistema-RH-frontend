@@ -7,7 +7,7 @@ export default function Dashboard() {
       {pessoas.map((pessoa, index) => (
         <div
           key={index}
-          className="flex items-center p-6 border rounded-lg shadow-lg w-full h-full relative bg-slate-200 hover:bg-slate-300"
+          className="flex items-center p-6 border rounded-lg shadow-lg shadow-blue-950/30 w-full h-full relative bg-slate-100 hover:bg-slate-200 hover:border-slate-300 hover:shadow-white/75"
         >
           <div className="w-1/3 flex justify-center items-center h-full rounded-lg bg-slate-300">
             <img

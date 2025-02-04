@@ -1,5 +1,5 @@
 [build]
 command = "yarn install && yarn build"
 publish = "build"  
-node_version = "18" 
+node_version = "22.13.0" 
 yarn_version = "1.22.19" 

@@ -1,6 +1,4 @@
 [build]
-[build]
 command = "yarn build"
-publish = "dist"
+publish = "dist" 
 environment = { NODE_VERSION = "20" }
-yarn_version = "1.22.19" 

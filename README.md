@@ -93,7 +93,7 @@ Inicie o servidor
   npm run start
 ```
 ### 🗺 Remotamente
-Acesse a url https://sistema-rh-wwxr.onrender.com, digite um usuário e senhas válidos fornecidos pelo time de desenvolvedores e utilize a aplicação.
+Acesse a url [https://buildmindsrh.netlify.app](https://buildmindsrh.netlify.app/), digite um usuário e senhas válidos fornecidos pelo time de desenvolvedores e utilize a aplicação.
 ## 🙌🏻 Equipe
 
 Desenvolvido com ❤️ por Anna Carolina Vighi, Bruno Alexandre Barros, Cacia Rodrigues e Marcos Lopes

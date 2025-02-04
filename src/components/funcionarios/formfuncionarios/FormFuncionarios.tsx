@@ -47,17 +47,17 @@ function FormFuncionarios() {
     }
   }
 
-  async function buscarUsuarios() {
-    try {
-      await buscar("/usuarios/all", setUsuarios, {
-        headers: { Authorization: token },
-      });
-    } catch (error: any) {
-      if (error.toString().includes("403")) {
-        handleLogout();
-      }
-    }
-  }
+  // async function buscarUsuarios() {
+  //   try {
+  //     await buscar("/usuarios/all", setUsuarios, {
+  //       headers: { Authorization: token },
+  //     });
+  //   } catch (error: any) {
+  //     if (error.toString().includes("403")) {
+  //       handleLogout();
+  //     }
+  //   }
+  // }
 
   async function buscarSetores() {
     try {
@@ -80,7 +80,7 @@ function FormFuncionarios() {
 
   useEffect(() => {
     buscarSetores();
-    buscarUsuarios(); // Carregar os usuários
+    //buscarUsuarios(); // Carregar os usuários
 
     if (id !== undefined) {
       buscarFuncionarioPorId(id);
@@ -101,7 +101,7 @@ function FormFuncionarios() {
       ...funcionario,
       [e.target.name]: e.target.value,
       setor: setor,
-      usuario: usuario, // Adiciona o usuario automaticamente do contexto
+      //usuario: usuario, // Adiciona o usuario automaticamente do contexto
     });
   }
 
@@ -115,7 +115,7 @@ function FormFuncionarios() {
 
     if (id !== undefined) {
       try {
-        await atualizar(`/funcionarios`, funcionario, setFuncionario, {
+        await atualizar(`/funcionarios/atualizar`, funcionario, setFuncionario, {
           headers: { Authorization: token },
         });
 
@@ -155,104 +155,104 @@ function FormFuncionarios() {
   const carregandoSetor = setor.nomeSetor === "";
 
   return (
-    <div className="min-h-screen flex flex-col mx-auto items-center">
+    <div className="min-h-screen flex flex-col items-center justify-start h-screen text-blue-950 bg-gradient-to-b from-blue-300 to-blue-50 py-5">
       <h1 className="text-4xl text-center my-8">
         {id !== undefined ? "Editar Funcionário" : "Cadastrar Funcionário"}
       </h1>
 
       <form
-        className="flex flex-col w-1/2 gap-4"
+        className="w-full flex flex-col gap-4 items-center justify-center"
         onSubmit={gerarNovoFuncionario}
       >
-        <div className="flex flex-col gap-2">
-          <label htmlFor="nome">Nome do funcionario</label>
+        <div className="flex flex-col gap-1 w-3/6">
+          <label htmlFor="nome" className="">Nome do funcionario</label>
           <input
             type="text"
             placeholder="Digite aqui o nome do funcionário"
             name="nome"
             required
-            className="border-2 border-blue-400 rounded p-2"
+            className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
             value={funcionario.nome}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 w-3/6">
           <label htmlFor="cargo">Cargo</label>
           <input
             type="text"
             placeholder="Escreva aqui o cargo do funcionário"
             name="cargo"
             required
-            className="border-2 border-blue-400 rounded p-2"
+            className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
             value={funcionario.cargo}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 w-3/6">
           <label htmlFor="salarioBase">Salário Base</label>
           <input
             type="number"
             placeholder="Digite aqui o salário base"
             name="salarioBase"
             required
-            className="border-2 border-blue-400 rounded p-2"
+            className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
             value={funcionario.salarioBase}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 w-3/6">
           <label htmlFor="bonus">Bônus</label>
           <input
             type="number"
             placeholder="Digite aqui o bônus"
             name="bonus"
             required
-            className="border-2 border-blue-400 rounded p-2"
+            className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
             value={funcionario.bonus}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 w-3/6">
           <label htmlFor="descontos">Descontos</label>
           <input
             type="number"
             placeholder="Digite aqui o desconto"
             name="descontos"
             required
-            className="border-2 border-blue-400 rounded p-2"
+            className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
             value={funcionario.descontos}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 w-3/6">
           <label htmlFor="horasTrabalhadas">Horas Trabalhadas</label>
           <input
             type="number"
             placeholder="Digite aqui as horas trabalhadas"
             name="horasTrabalhadas"
             required
-            className="border-2 border-blue-400 rounded p-2"
+            className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
             value={funcionario.horasTrabalhadas}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 w-3/6">
           <label htmlFor="aniversarioEmpresa">Aniversário da Empresa</label>
           <input
             type="date"
             name="aniversarioEmpresa"
             required
-            className="border-2 border-blue-400 rounded p-2"
+            className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
             value={funcionario.aniversarioEmpresa || ""}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1 w-3/6">
           <p>Setor</p>
           <select
             name="setor"
             id="setor"
-            className="border p-2 border-lit-eggplant-purple rounded"
+            className="w-full rounded-lg border border-slate-300 py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-300"
             onChange={(e) => buscarSetorPorId(e.currentTarget.value)}
           >
             <option value="" selected disabled>
@@ -268,16 +268,16 @@ function FormFuncionarios() {
         </div>
 
         {/* Novo campo para o usuário */}
-        <div className="flex flex-col gap-2">
+        {/* <div className="flex flex-col gap-1 w-3/6">
           <p>Usuário</p>
           <select
             name="usuario"
             id="usuario"
-            className="border p-2 border-lit-eggplant-purple rounded"
+            className="border p-2 border-blue-200 rounded"
             value={funcionario.usuario ? funcionario.usuario.id : ""}
             onChange={(e) => atualizarEstado(e)}
           >
-            <option value="" disabled>
+            <option value="" selected disabled>
               Selecione um Usuário
             </option>
 
@@ -287,11 +287,11 @@ function FormFuncionarios() {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
         <button
           type="submit"
-          className="rounded disabled:bg-blue-400 bg-blue-600 hover:bg-blue-700 text-blue-50 font-bold w-1/2 mx-auto py-2 flex justify-center"
+          className="w-1/3 rounded-lg bg-blue-500 text-white font-medium text-base py-3 px-6 mt-6 shadow-md hover:bg-blue-600 disabled:opacity-80 flex justify-center items-center"
           disabled={carregandoSetor}
         >
           {isLoading ? (

@@ -11,5 +11,5 @@ export default interface Funcionario {
     descontos: number;
     aniversarioEmpresa: string;
     setor: Setor | null;
-    usuario: Usuario | null;
+    usuario?: Usuario | null;
 }

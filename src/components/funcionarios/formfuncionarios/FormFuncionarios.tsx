@@ -155,7 +155,7 @@ function FormFuncionarios() {
   const carregandoSetor = setor.nomeSetor === "";
 
   return (
-    <div className="h-screen flex flex-col mx-auto items-center ">
+    <div className="min-h-screen flex flex-col mx-auto items-center">
       <h1 className="text-4xl text-center my-8">
         {id !== undefined ? "Editar Funcionário" : "Cadastrar Funcionário"}
       </h1>

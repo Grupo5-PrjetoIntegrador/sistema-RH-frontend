@@ -15,7 +15,7 @@ import Vitrine from './pages/vitrine/Vitrine';
 import DeletarFuncionario from './components/funcionarios/deletefuncionarios/DeleteFuncionarios';
 import { ToastContainer } from 'react-toastify';
 import SalarioFuncionarios from './components/funcionarios/salariofuncionarios/SalarioFuncionarios';
-
+//
 function App() {
     return (
         <>
